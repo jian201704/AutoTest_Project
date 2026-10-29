@@ -1,0 +1,65 @@
+<Window x:Class="OpenTap.ScriptRunner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OpenTAP Script Runner"
+        Width="760"
+        Height="520"
+        MinWidth="620"
+        MinHeight="420"
+        Background="{StaticResource WindowBrush}"
+        Closing="Window_Closing"
+        AllowDrop="True"
+        Drop="Window_Drop">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="{StaticResource ChromeBrush}" Padding="18,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="OPENTAP" Foreground="#AFC8D8" FontSize="10" FontWeight="SemiBold" />
+                    <TextBlock Text="Script Runner" Foreground="White" FontSize="21" FontWeight="SemiBold" Margin="0,2,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Name="RunButton" Content="▶  Run" Click="Run_Click" Background="#2D9A62" BorderBrush="#2D9A62" Foreground="White" />
+                    <Button Name="AbortButton" Content="■  Abort" Click="Abort_Click" IsEnabled="False" Background="#B94A48" BorderBrush="#B94A48" Foreground="White" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border DockPanel.Dock="Top" Background="White" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="14,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="SELECTED PLAN OR SCRIPT" Foreground="{StaticResource MutedBrush}" FontSize="10" FontWeight="SemiBold" />
+                    <TextBlock Name="FilePathText" Text="No file selected" Margin="0,4,0,0" TextTrimming="CharacterEllipsis" ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
+                </StackPanel>
+                <Button Grid.Column="1" Content="Open..." Click="Open_Click" />
+            </Grid>
+        </Border>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Margin="4,2,4,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="STATUS" Foreground="{StaticResource MutedBrush}" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center" />
+                <TextBlock Name="StatusText" Grid.Column="1" Text="Ready" FontSize="14" FontWeight="SemiBold" Margin="10,0" VerticalAlignment="Center" />
+                <TextBlock Name="ElapsedText" Grid.Column="2" Text="00:00:00" FontFamily="Consolas" FontSize="14" VerticalAlignment="Center" />
+            </Grid>
+            <GroupBox Grid.Row="1" Header="Run Log">
+                <RichTextBox Name="LogText" IsReadOnly="True" IsDocumentEnabled="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FontFamily="Consolas" Background="#FBFCFD" BorderBrush="{StaticResource BorderBrush}" />
+            </GroupBox>
+            <TextBlock Grid.Row="2" Name="VerdictText" Text="Verdict: Not run" Foreground="{StaticResource MutedBrush}" FontWeight="SemiBold" Margin="8,8,4,2" />
+        </Grid>
+    </DockPanel>
+</Window>

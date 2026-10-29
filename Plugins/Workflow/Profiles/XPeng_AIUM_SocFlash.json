@@ -1,0 +1,22 @@
+{
+  "ExpectedProject": "R02-DUAL",
+  "ExpectedVersion": "0.4.3-r02-robot",
+  "HandshakeHexFile": "XPeng_AIUM_SocFlash_Handshake.hex",
+  "VersionQueryHex": "F4 03 00 00 00 00 00 00 00 00 00 00",
+  "StartHex": "38 08 00 00 00 00 00 00 00 00 00 00",
+  "StatusQueryHex": "EC 03 00 00 00 00 00 00 00 00 00 00",
+  "RunningSignatureHex": "EC 03 00 00 38 08 00 00 01 00 00 00 30",
+  "PassSignatureHex": "38 08 00 00 01 00 00 00 03 00 00 00 31 30 30",
+  "FailSignatureHex": "38 08 00 00 02 00 00 00 00 00 00 00",
+  "FreeSignatureHex": "EC 03 00 00 01 00 00 00 00 00 00 00",
+  "ResponseTimeoutMs": 1000,
+  "HandshakeSettleDelayMs": 100,
+  "BeforeStartDelayMs": 1000,
+  "StartDrainDelayMs": 1000,
+  "InitialFlashDelayMs": 5000,
+  "PollIntervalMs": 1000,
+  "MaxPollCount": 1000,
+  "OverallTimeoutMs": 0,
+  "PostFlashDrainDelayMs": 1000,
+  "PostFlashDrainTimeoutMs": 1000
+}

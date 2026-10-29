@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Tap.Plugins.Uds</AssemblyName>
+    <RootNamespace>Tap.Plugins.Uds</RootNamespace>
+    <ProtocolParserRoot Condition="'$(ProtocolParserRoot)' == ''">$(MSBuildThisFileDirectory)..\..\Jems_UDS</ProtocolParserRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(OpenTapSourceRoot)\Engine\Tap.Engine.csproj" />
+    <ProjectReference Include="$(ProtocolParserRoot)\ExcelDecodeCore\ExcelDecodeCore.csproj" />
+    <ProjectReference Include="$(ProtocolParserRoot)\UdsProtocol\UdsProtocol.csproj" />
+    <ProjectReference Include="$(ProtocolParserRoot)\UdsCore\UdsCore.csproj" />
+    <ProjectReference Include="$(ProtocolParserRoot)\UdsCan\UdsCan.csproj" />
+    <ProjectReference Include="$(ProtocolParserRoot)\UdsCanZlg\UdsCanZlg.csproj" />
+    <ProjectReference Include="$(ProtocolParserRoot)\UdsEngine\UdsEngine.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(ProtocolParserRoot)\artifacts\Modules\UserLibraries\zlgcan\zlgcan_x64\zlgcan.dll')">
+    <None Include="$(ProtocolParserRoot)\artifacts\Modules\UserLibraries\zlgcan\zlgcan_x64\*.dll" Link="Modules\UserLibraries\zlgcan\zlgcan_x64\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(ProtocolParserRoot)\artifacts\Modules\UserLibraries\zlgcan\zlgcan_x86\zlgcan.dll')">
+    <None Include="$(ProtocolParserRoot)\artifacts\Modules\UserLibraries\zlgcan\zlgcan_x86\*.dll" Link="Modules\UserLibraries\zlgcan\zlgcan_x86\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

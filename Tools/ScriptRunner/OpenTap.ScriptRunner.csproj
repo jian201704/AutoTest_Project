@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>OpenTap.ScriptRunner</AssemblyName>
+    <RootNamespace>OpenTap.ScriptRunner</RootNamespace>
+    <PythonRuntimeDirectory Condition="'$(PythonRuntimeDirectory)' == ''">$(MSBuildProjectDirectory)\..\OpenTapRuntime934</PythonRuntimeDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(OpenTapSourceRoot)\Engine\Tap.Engine.csproj" />
+    <ProjectReference Include="$(OpenTapSourceRoot)\BasicSteps\Tap.Plugins.BasicSteps.csproj" />
+    <ProjectReference Include="..\..\Plugins\Script\Tap.Plugins.Script.csproj" />
+    <ProjectReference Include="..\..\Plugins\Uds\Tap.Plugins.Uds.csproj" />
+    <ProjectReference Include="..\..\Plugins\Workflow\Tap.Plugins.Workflow.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="Exists('$(PythonRuntimeDirectory)\Packages\Python\OpenTap.Python.dll')">
+    <Content Include="$(PythonRuntimeDirectory)\OpenTap.Package.dll">
+      <Link>OpenTap.Package.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(PythonRuntimeDirectory)\Packages\OpenTAP\OpenTap.Cli.dll">
+      <Link>OpenTap.Cli.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(PythonRuntimeDirectory)\Packages\Python\**\*">
+      <Link>Packages\Python\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(PythonRuntimeDirectory)\Dependencies\Python.Runtime.*\Python.Runtime.dll">
+      <Link>Python.Runtime.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildProjectDirectory)\..\..\Plugins\Python\PythonModules\**\*.py">
+      <Link>Packages\Python\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <Target Name="WarnWhenPythonRuntimeIsMissing" BeforeTargets="Build" Condition="!Exists('$(PythonRuntimeDirectory)\Packages\Python\OpenTap.Python.dll')">
+    <Warning Text="OpenTap.Python is not installed. Run Plugins/Python/setup-python.ps1 to enable Python TestSteps." />
+  </Target>
+</Project>

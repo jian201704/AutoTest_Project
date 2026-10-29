@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Tap.Plugins.Script</AssemblyName>
+    <RootNamespace>Tap.Plugins.Script</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(OpenTapSourceRoot)\Engine\Tap.Engine.csproj" />
+    <ProjectReference Include="$(OpenTapSourceRoot)\BasicSteps\Tap.Plugins.BasicSteps.csproj" />
+    <ProjectReference Include="..\Workflow\Tap.Plugins.Workflow.csproj" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.11.0" />
+  </ItemGroup>
+
+</Project>

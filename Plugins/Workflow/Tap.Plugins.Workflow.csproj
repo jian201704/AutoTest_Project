@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Tap.Plugins.Workflow</AssemblyName>
+    <RootNamespace>Tap.Plugins.Workflow</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+    <ProjectReference Include="$(OpenTapSourceRoot)\Engine\Tap.Engine.csproj" />
+    <ProjectReference Include="$(OpenTapSourceRoot)\BasicSteps\Tap.Plugins.BasicSteps.csproj" />
+    <ProjectReference Include="..\Uds\Tap.Plugins.Uds.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Profiles\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

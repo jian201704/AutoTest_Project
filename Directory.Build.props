@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <OpenTapSourceRoot Condition="'$(OpenTapSourceRoot)' == ''">$(MSBuildThisFileDirectory)..\opentap-9.34.0</OpenTapSourceRoot>
+  </PropertyGroup>
+</Project>

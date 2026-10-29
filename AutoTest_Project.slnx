@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Plugins/">
+    <Project Path="Plugins/Script/Tap.Plugins.Script.csproj" />
+    <Project Path="Plugins/Uds/Tap.Plugins.Uds.csproj" />
+    <Project Path="Plugins/Uds.Tests/Tap.Plugins.Uds.Tests.csproj" />
+    <Project Path="Plugins/Workflow/Tap.Plugins.Workflow.csproj" />
+  </Folder>
+  <Folder Name="/WpfEditor/">
+    <Project Path="WpfEditor/OpenTap.WpfEditor.csproj" />
+  </Folder>
+  <Folder Name="/poc/">
+    <Project Path="poc/OpenTap.Poc/OpenTap.Poc.csproj" />
+  </Folder>
+  <Folder Name="/Tools/">
+    <Project Path="Tools/VirtualDoipEcu/VirtualDoipEcu.csproj" />
+    <Project Path="Tools/ScriptRunner/OpenTap.ScriptRunner.csproj" />
+  </Folder>
+</Solution>
